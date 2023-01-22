@@ -8,6 +8,9 @@ export class ProductDetails {
   }
 
   async init() {
+    this.product = await this.dataSource.findProductById(this.productId);
+
+    this.renderProductDetails();
     // use our datasource to get the details for the current product. findProductById will return a promise! use await or .then() to process it
     // once we have the product details we can render out the HTML
     // once the HTML is rendered we can add a listener to Add to Cart button
@@ -17,15 +20,12 @@ export class ProductDetails {
   }
 
   addToCart() {
-    setLocalStorage(this.productId, this.product);
+    setLocalStorage("so-cart", this.product);
   }
 
   async renderProductDetails() {
-    const productDetails = await this.dataSource.findProductById(this.productId);
-    this.product = productDetails;
-    setLocalStorage(this.productId, this.product)
-
-    const html = `
+    document.querySelector(".product-detail")
+    .innerHTML = `
       <h3>${this.product.Brand.Name}</h3>
 
       <h2 class="divider">${this.product.NameWithoutBrand}</h2>
