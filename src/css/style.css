@@ -94,6 +94,18 @@ button {
 .divider {
   border-bottom: 2px solid var(--primary-color);
 }
+.cart-footer{
+  visibility: visible;
+  text-align: right;
+}
+
+.cart-total-text{
+  display:inline;
+}
+
+.cart-total-value{
+  display:inline;
+}
 /* End utility classes */
 
 /* Cart icon styles */

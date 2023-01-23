@@ -61,6 +61,10 @@
     <main class="divider">
       <section class="products">
         <h2>My Cart</h2>
+        <div class="cart-footer hide" id="cart-footer">
+          <p class="cart-total-text" id="cart-total-text">Total: $</p>
+          <p class="cart-total-value" id="cart-total-value"> show total price here</p>
+        </div>
 
         <ul class="product-list">
           <!-- <li class="cart-card divider">
@@ -98,5 +102,50 @@
     </main>
 
     <footer>&copy;NOT a real business</footer>
+
+    <script>
+      let showTotal = false;
+      let productIds = ["989CG", "985PR", "880RR", "344YJ"];
+
+      //This is function already exist in utils.mjs... import it
+      function getLocalStorage(key) {
+        return JSON.parse(localStorage.getItem(key));
+      }
+
+      function getPrice() {
+        let priceToDisplay = 0;
+        
+        for (let i = 0; i < productIds.length; i++) {
+          if (getLocalStorage(productIds[i]) != null){
+            const cartItem = getLocalStorage(productIds[i]);
+            priceToDisplay += cartItem.ListPrice;
+            showTotal = true;
+          }
+        }
+
+        // const cartItems = [getLocalStorage("so-cart")];
+        // for (let i = 0; i < cartItems.length; i++) {
+        //   if (cartItems[i].Id){
+        //     priceToDisplay += cartItems[i].ListPrice;
+        //     showTotal = true;
+        //   }
+        // }
+        return priceToDisplay;
+      }
+
+      //if there is any product in the cart then show total price.
+      async function displayPrice() {
+        await console.log("> showTotal  : ", showTotal);
+        if(!showTotal){
+          document.getElementById("cart-footer").style.visibility = "hidden";
+        }
+      }
+      window.onload = function() {
+        displayPrice();
+            //when the document is finished loading, replace cart-total-value
+            //to getPrice()
+        document.getElementById("cart-total-value").innerHTML= getPrice();
+      }
+    </script>
   </body>
 </html>

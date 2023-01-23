@@ -13,6 +13,7 @@ product.renderProductDetails();
 
 function addProductToCart(product) {
   setLocalStorage(product.Id, product);
+  //setLocalStorage("so-cart", product);
 }
 // add to cart button event handler
 async function addToCartHandler(e) {
