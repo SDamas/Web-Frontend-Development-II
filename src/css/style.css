@@ -108,6 +108,29 @@ button {
 }
 /* End utility classes */
 
+/*Superscript number of items*/
+.badge {
+  padding-left: 9px;
+  padding-right: 9px;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  border-radius: 9px;
+}
+
+.label-warning[href],
+.badge-warning[href] {
+  background-color: #bdab92;
+}
+#lblCartCount {
+    font-size: 12px;
+    background: #ff6600;
+    color: rgb(10, 10, 10);
+    padding: 0 5px;
+    vertical-align: top;
+    margin-left: -10px; 
+}
+/* End Superscript number of items*/
+
 /* Cart icon styles */
 .cart {
   padding-top: 1em;

@@ -38,7 +38,9 @@
             <text x="0" y="120" fill="#000000" font-size="5px" font-weight="bold" font-family="'Helvetica Neue', Helvetica, Arial-Unicode, Arial, Sans-serif">from the Noun Project</text> -->
           </svg>
         </a>
+        <span class='badge badge-warning' id='lblCartCount'> </span>
       </div>
+      
     </header>
     <main class="divider">
       <div class="hero">
@@ -112,5 +114,27 @@
       </section>
     </main>
     <footer>&copy;NOT a real business</footer>
+
+    <script>
+      let productIds = ["989CG", "985PR", "880RR", "344YJ"];
+
+      //This function already exist in utils.mjs... import it
+      function getLocalStorage(key) {
+        return JSON.parse(localStorage.getItem(key));
+      }
+
+      function getQtyItens() {
+        let qtyItens = 0;
+        
+        for (let i = 0; i < productIds.length; i++) {
+          if (getLocalStorage(productIds[i]) != null){
+            qtyItens = qtyItens + 1;
+          }
+        }
+        return qtyItens;
+      }
+
+      document.getElementById("lblCartCount").innerHTML= getQtyItens();
+    </script>
   </body>
 </html>
