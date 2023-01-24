@@ -146,7 +146,8 @@
       }
 
       //if there is any product in the cart then show total price.
-      function displayPrice() {
+      async function displayPrice() {
+        await console.log("> showTotal  : ", showTotal);
         if(!showTotal){
           document.getElementById("cart-footer").style.visibility = "hidden";
         }
