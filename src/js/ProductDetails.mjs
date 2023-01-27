@@ -20,7 +20,8 @@ export class ProductDetails {
   }
 
   addToCart() {
-    setLocalStorage("so-cart", this.product);
+    // setLocalStorage("so-cart", this.product);
+    setLocalStorage(this.productId, this.product);
   }
 
   async renderProductDetails() {
