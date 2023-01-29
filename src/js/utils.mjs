@@ -46,6 +46,7 @@ export function getParam(param) {
   return urlParams.get(param);
 }
 
+// NOTE: What about the name "renderProductListWithTemplate" instead?
 export function renderListWithTemplate(
   templateFn,
   parentElement,

@@ -7,8 +7,8 @@ function renderCartContents() {
   let cartItems = [];
 
   for (let i = 0; i < productIds.length; i++) {
-    if (getLocalStorage(productIds[i]) != null){
-      cartItems = [... cartItems, getLocalStorage(productIds[i])];
+    if (getLocalStorage(productIds[i]) != null) {
+      cartItems = [...cartItems, getLocalStorage(productIds[i])];
     }
   }
 
