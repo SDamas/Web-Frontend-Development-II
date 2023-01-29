@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sleep Outside | Home</title>
     <link rel="stylesheet" href="/css/style.css" />
+    <script src="./js/main.js" type="module" defer></script>
   </head>
   <body>
     <header class="divider">
@@ -43,7 +44,7 @@
       
     </header>
     <main class="divider">
-      <div class="hero">
+      <!-- <div class="hero">
         <img
           src="/images/banner-sm.jpg"
           srcset="images/banner-sm.jpg 500w, images/banner.jpg"
@@ -111,29 +112,36 @@
             >
           </li>
         </ul>
+      </section> -->
+      <div class="hero">
+        <img
+          src="/images/banner-sm.jpg"
+          srcset="images/banner-sm.jpg 500w, images/banner.jpg"
+          alt="image of a high mountain lake"
+        />
+        <div class="logo logo--square">
+          <img src="/images/noun_Tent_2517.svg" alt="tent image for logo" />
+          <div>Sleep<span class="highlight">Outside</span></div>
+        </div>
+      </div>
+      <section class="mission">
+        <p>We spend too much time these days indoors...sitting usually.</p>
+        <p>No wonder we are a mess!</p>
+        <p>
+          What we really need is to get outside...in fact SLEEP outside. Our
+          mission is to provide you with everything you need to do this
+          comfortably at an affordable price.
+        </p>
+      </section>
+      <section class="products">
+        <h2>Top Products</h2>
+        <ul class="product-list"></ul>
       </section>
     </main>
     <footer>&copy;NOT a real business</footer>
 
-    <script>
-      let productIds = ["989CG", "985PR", "880RR", "344YJ"];
-
-      //This function already exist in utils.mjs... import it
-      function getLocalStorage(key) {
-        return JSON.parse(localStorage.getItem(key));
-      }
-
-      function getQtyItens() {
-        let qtyItens = 0;
-        
-        for (let i = 0; i < productIds.length; i++) {
-          if (getLocalStorage(productIds[i]) != null){
-            qtyItens = qtyItens + 1;
-          }
-        }
-        return qtyItens;
-      }
-
+    <script type="module">
+      import { getQtyItens } from "./js/utils.mjs";
       document.getElementById("lblCartCount").innerHTML= getQtyItens();
     </script>
   </body>

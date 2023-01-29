@@ -104,29 +104,14 @@
 
     <footer>&copy;NOT a real business</footer>
 
-    <script>
+    <script type="module">
+      import { getLocalStorage, getProductsIds, getQtyItens } from "../js/utils.mjs";
+
       let showTotal = false;
-      let productIds = ["989CG", "985PR", "880RR", "344YJ", "985RF"];
-
-      //This function already exist in utils.mjs... import it
-      function getLocalStorage(key) {
-        return JSON.parse(localStorage.getItem(key));
-      }
-
-      function getQtyItens() {
-        let qtyItens = 0;
-        
-        for (let i = 0; i < productIds.length; i++) {
-          if (getLocalStorage(productIds[i]) != null){
-            qtyItens = qtyItens + 1;
-          }
-        }
-        return qtyItens;
-      }
 
       function getPrice() {
         let priceToDisplay = 0;
-        
+        let productIds = getProductsIds();   
         for (let i = 0; i < productIds.length; i++) {
           if (getLocalStorage(productIds[i]) != null){
             const cartItem = getLocalStorage(productIds[i]);
@@ -134,14 +119,6 @@
             showTotal = true;
           }
         }
-
-        // const cartItems = [getLocalStorage("so-cart")];
-        // for (let i = 0; i < cartItems.length; i++) {
-        //   if (cartItems[i].Id){
-        //     priceToDisplay += cartItems[i].ListPrice;
-        //     showTotal = true;
-        //   }
-        // }
         return priceToDisplay;
       }
 

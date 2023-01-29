@@ -2,8 +2,8 @@ import { getLocalStorage } from "./utils.mjs";
 
 function renderCartContents() {
   // const cartItems = [getLocalStorage("so-cart")];
-  let productIds = ["989CG", "985PR", "880RR", "344YJ", "985RF"];
-  
+  let productIds = ["880RR", "985RF", "989CG", "985PR", "880RT", "344YJ"];
+
   let cartItems = [];
 
   for (let i = 0; i < productIds.length; i++) {
