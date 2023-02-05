@@ -22,6 +22,15 @@ export class ProductDetails {
   addToCart() {
     // setLocalStorage("so-cart", this.product);
     setLocalStorage(this.productId, this.product);
+    // TODO: Find another file to put this function
+    animateBackPackIcon()
+    function animateBackPackIcon() {
+      const backpack = document.querySelector("#backpack-icon");
+      backpack.classList.add("animate");
+      setTimeout(() => {
+        backpack.classList.remove("animate")
+      }, 310)
+    }
   }
 
   // async renderProductDetails() {
