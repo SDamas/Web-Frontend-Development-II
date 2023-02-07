@@ -218,6 +218,13 @@ button {
   width: 100%;
 }
 
+/*Start trash-symbol*/
+#trash-symbol{
+  text-align: left;
+  text-decoration: none;
+}
+/*End trash-symbol*/
+
 /* Start cart list card styles */
 .cart-card {
   display: grid;
