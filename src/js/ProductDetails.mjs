@@ -74,7 +74,10 @@ function productDetailsTemplate(product) {
       src="${product.Image}"
       alt="${product.NameWithoutBrand}"
     />
-    <p class="product-card__price">$${product.FinalPrice}</p>
+    <div class="discount" id="discount" >
+      <span>Discount $${CurrencyFormatted(product.SuggestedRetailPrice - product.FinalPrice)}</span>
+    </div>
+    <p class="product-card__price">Price $${product.FinalPrice}</p>
     <p class="product__color">${product.Colors[0].ColorName}</p>
     <p class="product__description">
     ${product.DescriptionHtmlSimple}
@@ -82,4 +85,19 @@ function productDetailsTemplate(product) {
     <div class="product-detail__add">
       <button id="addToCart" data-id="${product.Id}">Add to Cart</button>
     </div></section>`;
+}
+
+function CurrencyFormatted(amount) {
+	var i = parseFloat(amount);
+	if(isNaN(i)) { i = 0.00; }
+	var minus = '';
+	if(i < 0) { minus = '-'; }
+	i = Math.abs(i);
+	i = parseInt((i + .005) * 100);
+	i = i / 100;
+	var s = new String(i);
+	if(s.indexOf('.') < 0) { s += '.00'; }
+	if(s.indexOf('.') == (s.length - 2)) { s += '0'; }
+	s = minus + s;
+	return s;
 }
