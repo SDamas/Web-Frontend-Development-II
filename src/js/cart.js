@@ -38,10 +38,6 @@ function cartItemTemplate(item) {
   return newItem;
 }
 
-function removeItem(item) {
-  localStorage.removeItem(item);
-}
-
 function updateCart() {
   renderCartContents();
   displayPrice();
@@ -49,56 +45,31 @@ function updateCart() {
 
   if (document.getElementById('removeFromCart880RR'))
   document.getElementById('removeFromCart880RR')
-    .addEventListener('click', removeItem880RR.bind(this));
+    .addEventListener('click', removeItem.bind(this, '880RR'));
 
   if (document.getElementById('removeFromCart989CG'))
     document.getElementById('removeFromCart989CG')
-      .addEventListener('click', removeItem989CG.bind(this));
+      .addEventListener('click', removeItem.bind(this, '989CG'));
 
   if (document.getElementById('removeFromCart985RF'))
     document.getElementById('removeFromCart985RF')
-      .addEventListener('click', removeItem985RF.bind(this));
+      .addEventListener('click', removeItem.bind(this, '985RF'));
 
   if (document.getElementById('removeFromCart985PR'))
     document.getElementById('removeFromCart985PR')
-      .addEventListener('click', removeItem985PR.bind(this));
+      .addEventListener('click', removeItem.bind(this, '985PR'));
 
   if (document.getElementById('removeFromCart880RT'))
     document.getElementById('removeFromCart880RT')
-      .addEventListener('click', removeItem880RT.bind(this));
+      .addEventListener('click', removeItem.bind(this, '880RT'));
 
   if (document.getElementById('removeFromCart344YJ'))
     document.getElementById('removeFromCart344YJ')
-      .addEventListener('click', removeItem344YJ.bind(this));
-  }
+      .addEventListener('click', removeItem.bind(this, '344YJ'));
+}
 
-function removeItem880RR() {
-  removeItem('880RR');
-  updateCart();
-};
-
-function removeItem989CG() {
-  removeItem('989CG');
-  updateCart();
-};
-
-function removeItem985RF() {
-  removeItem('985RF');
-  updateCart();
-};
-
-function removeItem985PR() {
-  removeItem('985PR');
-  updateCart();
-};
-
-function removeItem880RT() {
-  removeItem('880RT');
-  updateCart();
-};
-
-function removeItem344YJ() {
-  removeItem('344YJ');
+function removeItem(idToBeRemoved) {
+  localStorage.removeItem(idToBeRemoved);
   updateCart();
 };
 
