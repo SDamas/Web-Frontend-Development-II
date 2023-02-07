@@ -12,6 +12,9 @@ export default class ProductData {
     this.path = `../json/${this.category}.json`;
   }
   getData() {
+    /* TODO: Organize data in descending order, so products will be grouped together.
+    Currently, tents are being displayed sorted in index.html.
+    */
     return fetch(this.path)
       .then(convertToJson)
       .then((data) => data);

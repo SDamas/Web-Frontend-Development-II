@@ -22,15 +22,6 @@ export class ProductDetails {
   addToCart() {
     // setLocalStorage("so-cart", this.product);
     setLocalStorage(this.productId, this.product);
-    // TODO: Find another file to put this function
-    animateBackPackIcon()
-    function animateBackPackIcon() {
-      const backpack = document.querySelector("#backpack-icon");
-      backpack.classList.add("animate");
-      setTimeout(() => {
-        backpack.classList.remove("animate")
-      }, 310)
-    }
   }
 
   // async renderProductDetails() {
@@ -74,7 +65,7 @@ function productDetailsTemplate(product) {
       src="${product.Image}"
       alt="${product.NameWithoutBrand}"
     />
-    <p class="product-card__price">$${product.FinalPrice}</p>
+    <p class="product-card__price">$${product.FinalPrice} <span id="suggested-retail-price">$${product.SuggestedRetailPrice}</span></p>
     <p class="product__color">${product.Colors[0].ColorName}</p>
     <p class="product__description">
     ${product.DescriptionHtmlSimple}

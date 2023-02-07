@@ -13,20 +13,6 @@
   --small-font: 0.8em;
   --large-font: 1.2em;
 }
-/* Animations */
-@keyframes scale {
-  0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.1);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
 * {
   box-sizing: border-box;
 }
@@ -60,9 +46,6 @@ header {
 .logo a {
   text-decoration: none;
   color: var(--font-body);
-}
-#backpack-icon.animate {
-  animation: scale .3s ease-out;
 }
 .hero {
   position: relative;
@@ -218,13 +201,6 @@ button {
   width: 100%;
 }
 
-/*Start trash-symbol*/
-#trash-symbol{
-  text-align: left;
-  text-decoration: none;
-}
-/*End trash-symbol*/
-
 /* Start cart list card styles */
 .cart-card {
   display: grid;
@@ -278,4 +254,11 @@ button {
 footer {
   font-size: var(--small-font);
   padding: 1em;
+}
+
+/* Tents Product Page */
+#suggested-retail-price {
+  font-size: 0.9rem;
+  text-decoration: line-through;
+  color: gray;
 }
