@@ -1,4 +1,4 @@
-import { getLocalStorage, getProductsIds, getQtyItens } from "./utils.mjs";
+import { getLocalStorage, getProductsIds, getQtyItens, loadHeaderFooter  } from "./utils.mjs";
 
 export function renderCartContents() {
   // const cartItems = [getLocalStorage("so-cart")];
@@ -41,7 +41,7 @@ function cartItemTemplate(item) {
 function updateCart() {
   renderCartContents();
   displayPrice();
-  document.getElementById("lblCartCount").innerHTML = getQtyItens();
+  // document.getElementById("lblCartCount").innerHTML = getQtyItens();
 
   if (document.getElementById('removeFromCart880RR'))
   document.getElementById('removeFromCart880RR')
@@ -95,4 +95,5 @@ function getPrice() {
   return priceToDisplay;
 }
 
+loadHeaderFooter();
 updateCart();
