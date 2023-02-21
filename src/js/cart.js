@@ -43,35 +43,41 @@ function updateCart() {
   displayPrice();
   document.getElementById("lblCartCount").innerHTML = getQtyItens();
 
-  if (document.getElementById('removeFromCart880RR'))
-  document.getElementById('removeFromCart880RR')
-    .addEventListener('click', removeItem.bind(this, '880RR'));
+  if (document.getElementById("removeFromCart880RR"))
+    document
+      .getElementById("removeFromCart880RR")
+      .addEventListener("click", removeItem.bind(this, "880RR"));
 
-  if (document.getElementById('removeFromCart989CG'))
-    document.getElementById('removeFromCart989CG')
-      .addEventListener('click', removeItem.bind(this, '989CG'));
+  if (document.getElementById("removeFromCart989CG"))
+    document
+      .getElementById("removeFromCart989CG")
+      .addEventListener("click", removeItem.bind(this, "989CG"));
 
-  if (document.getElementById('removeFromCart985RF'))
-    document.getElementById('removeFromCart985RF')
-      .addEventListener('click', removeItem.bind(this, '985RF'));
+  if (document.getElementById("removeFromCart985RF"))
+    document
+      .getElementById("removeFromCart985RF")
+      .addEventListener("click", removeItem.bind(this, "985RF"));
 
-  if (document.getElementById('removeFromCart985PR'))
-    document.getElementById('removeFromCart985PR')
-      .addEventListener('click', removeItem.bind(this, '985PR'));
+  if (document.getElementById("removeFromCart985PR"))
+    document
+      .getElementById("removeFromCart985PR")
+      .addEventListener("click", removeItem.bind(this, "985PR"));
 
-  if (document.getElementById('removeFromCart880RT'))
-    document.getElementById('removeFromCart880RT')
-      .addEventListener('click', removeItem.bind(this, '880RT'));
+  if (document.getElementById("removeFromCart880RT"))
+    document
+      .getElementById("removeFromCart880RT")
+      .addEventListener("click", removeItem.bind(this, "880RT"));
 
-  if (document.getElementById('removeFromCart344YJ'))
-    document.getElementById('removeFromCart344YJ')
-      .addEventListener('click', removeItem.bind(this, '344YJ'));
+  if (document.getElementById("removeFromCart344YJ"))
+    document
+      .getElementById("removeFromCart344YJ")
+      .addEventListener("click", removeItem.bind(this, "344YJ"));
 }
 
 function removeItem(idToBeRemoved) {
   localStorage.removeItem(idToBeRemoved);
   updateCart();
-};
+}
 
 function displayPrice() {
   let price = getPrice();

@@ -62,7 +62,7 @@ header {
   color: var(--font-body);
 }
 #backpack-icon.animate {
-  animation: scale .3s ease-out;
+  animation: scale 0.3s ease-out;
 }
 .hero {
   position: relative;
@@ -95,7 +95,7 @@ header {
 }
 
 /*blink effect*/
-#discount{
+#discount {
   width: 465px;
   height: 60px;
   background-color: var(--secondary-color);
@@ -107,7 +107,7 @@ header {
 #discount > span {
   font-size: var(--font-base);
   font-family: var(--font-body);
-  color: var(--light-grey); 
+  color: var(--light-grey);
   animation: blink 1s linear infinite;
 }
 @keyframes blink {
@@ -115,7 +115,7 @@ header {
     opacity: 0;
   }
   50% {
-    opacity: .5;
+    opacity: 0.5;
   }
   100% {
     opacity: 1;
@@ -250,7 +250,7 @@ button {
 }
 
 /*Start trash-symbol*/
-#trash-symbol{
+#trash-symbol {
   text-align: left;
   text-decoration: none;
 }
@@ -309,4 +309,40 @@ button {
 footer {
   font-size: var(--small-font);
   padding: 1em;
+}
+
+/********** Home page **********/
+.products-category {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.products-category a {
+  text-decoration: none;
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 6rem;
+  text-align: center;
+}
+
+.category h1 {
+  font-size: 1rem;
+  color: black;
+}
+
+.category picture {
+  width: 80px;
+  height: 80px;
+}
+
+.category picture img {
+  width: 100%;
+  height: auto;
 }

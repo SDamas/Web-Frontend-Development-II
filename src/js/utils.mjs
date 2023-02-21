@@ -61,3 +61,12 @@ export function renderListWithTemplate(
   }
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
 }
+
+// This function adds a "grow and shrink" animation to the backpack icon when a new product is added to the cart.
+export function animateBackPackIcon() {
+  const backpack = document.querySelector("#backpack-icon");
+  backpack.classList.add("animate");
+  setTimeout(() => {
+    backpack.classList.remove("animate")
+  }, 310)
+}
