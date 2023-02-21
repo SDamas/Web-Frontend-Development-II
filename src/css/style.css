@@ -42,6 +42,7 @@ img {
 header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 0 10px;
 }
 .logo {
@@ -345,4 +346,21 @@ footer {
 .category picture img {
   width: 100%;
   height: auto;
+}
+/* Searchbox */
+#search-box-form {
+  display: flex;
+  height: 40px;
+}
+
+#search-box-form #search-box {
+  border: none;
+  border: 1px solid gray;
+  border-radius: 4px 0 0 4px;
+}
+
+#search-box-form button {
+  height: 40px;
+  padding: .5rem;
+  border-radius: 0 4px 4px 0;
 }
