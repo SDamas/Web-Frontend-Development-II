@@ -1,4 +1,5 @@
 import { setLocalStorage } from "./utils.mjs";
+import { animateBackPackIcon } from "./utils.mjs";
 
 export class ProductDetails {
   constructor(productId, dataSource) {
@@ -8,57 +9,31 @@ export class ProductDetails {
   }
 
   async init() {
+    // Get product data from remote url
     this.product = await this.dataSource.findProductById(this.productId);
 
-    this.renderProductDetails("main");
-    // use our datasource to get the details for the current product. findProductById will return a promise! use await or .then() to process it
-    // once we have the product details we can render out the HTML
-    // once the HTML is rendered we can add a listener to Add to Cart button
-    // Notice the .bind(this). Our callback will not work if we don't include that line. Review the readings from this week on 'this' to understand why.
+    // Render the product details into the .product-details html element
+    this.renderProductDetails(".product-details");
+
+    /* This line adds the addToCart function to the addToCart html element in the page. It binds the "this"
+    instance from this class. So, when the function is called, all the "this" calls refer to this class instance,
+    initialized in the page, instead of the element calling the function.*/ 
     document.getElementById('addToCart')
             .addEventListener('click', this.addToCart.bind(this));
   }
 
+  // This function sets the product'a id and json to the LocalStorage.
+  // Then, it calls the animateBackPackIcon function to represent a product was added to the cart.
   addToCart() {
-    // setLocalStorage("so-cart", this.product);
     setLocalStorage(this.productId, this.product);
-    // TODO: Find another file to put this function
     animateBackPackIcon()
-    function animateBackPackIcon() {
-      const backpack = document.querySelector("#backpack-icon");
-      backpack.classList.add("animate");
-      setTimeout(() => {
-        backpack.classList.remove("animate")
-      }, 310)
-    }
   }
 
-  // async renderProductDetails() {
-  //   document.querySelector(".product-detail")
-  //   .innerHTML = `
-  //     <h3>${this.product.Brand.Name}</h3>
-
-  //     <h2 class="divider">${this.product.NameWithoutBrand}</h2>
-
-  //     <img
-  //       class="divider"
-  //       src="${this.product.Image}"
-  //       alt="${this.product.NameWithoutBrand}"
-  //     />
-
-  //     <p class="product-card__price">${this.product.ListPrice}</p>
-
-  //     <p class="product__color">${this.product.Colors[0].ColorName}</p>
-
-  //     <p class="product__description">${this.product.DescriptionHtmlSimple}</p>
-
-  //     <div class="product-detail__add">
-  //       <button id="addToCart" data-id="${this.productId}">Add to Cart</button>
-  //     </div>
-  //   `
-  // }
+  // This function renders the product details into the given html selector
   renderProductDetails(selector) {
+    // Get html selector
     const element = document.querySelector(selector);
+    // Render product details using template
     element.insertAdjacentHTML(
       "afterBegin",
       productDetailsTemplate(this.product)
@@ -66,12 +41,13 @@ export class ProductDetails {
   }
 }
 
+// This function is the template used to render the product details. It receives a json object as parameter.
 function productDetailsTemplate(product) {
   return `<section class="product-detail"> <h3>${product.Brand.Name}</h3>
     <h2 class="divider">${product.NameWithoutBrand}</h2>
     <img
       class="divider"
-      src="${product.Image}"
+      src="${product.Images.PrimaryLarge}"
       alt="${product.NameWithoutBrand}"
     />
     <div class="discount" id="discount" >
