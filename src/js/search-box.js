@@ -2,7 +2,7 @@
 import ProductData from "./ProductData.mjs";
 
 const dataSource = new ProductData();
-const categories = ["tents", "backpacks", "sleeping-bags", "hammocks"]
+const categories = ["tents", "backpacks", "sleeping-bags", "hammocks"];
 
 // 1. Get all products
 async function getProducts() {
@@ -33,7 +33,9 @@ setTimeout(() => {
 }, 1);
 
 function filterProducts(prompt) {
-  const filteredProducts = products.filter((product) => product.Name.toLowerCase().includes(prompt))
+  const filteredProducts = products.filter((product) =>
+    product.Name.toLowerCase().includes(prompt)
+  );
   return filteredProducts;
 }
 
@@ -43,5 +45,5 @@ function renderProductsSearchResult(products) {
   products.forEach((product) => {
     const option = new Option(product.Name, product.Id);
     datalist.appendChild(option);
-  })
+  });
 }
