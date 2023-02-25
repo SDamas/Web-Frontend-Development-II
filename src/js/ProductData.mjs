@@ -9,6 +9,17 @@ function convertToJson(res) {
 }
 
 export default class ProductData {
+  constructor() {
+    this.categories = ["tents", "backpacks", "sleeping-bags", "hammocks"];
+  }
+  async getProducts() {
+    const products = [];
+    for (const category of this.categories) {
+      const data = await this.getData(category);
+      products.push(...data);
+    }
+    return products;
+  }
 
   async getData(category) {
     const response = await fetch(baseURL + `products/search/${category}`);

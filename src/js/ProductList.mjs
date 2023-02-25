@@ -10,22 +10,25 @@ export default class ProductList {
     this.listElement = listElement;
   }
   async init() {
+
     // our dataSource will return a Promise...so we can use await to resolve it.
     const list = await this.dataSource.getData(this.category);
+
+    // render the list 
+    this.renderList(list);
 
      // NOTE: calling function for "Remove extra products" idea.
     filterProductsById(list, "880RR", "985RF");
 
-    // render the list 
-    this.renderList(list);
   }
+
   // render after doing the first stretch
   renderList(list) {
     renderListWithTemplate(productCardTemplate, this.listElement, list);
   }
 }
 
-function productCardTemplate(product) {
+export function productCardTemplate(product) {
   return `<li class="product-card">
   <a href="../product_pages/index.html?product=${product.Id}">
   <img
