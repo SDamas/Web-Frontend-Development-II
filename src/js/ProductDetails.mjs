@@ -26,14 +26,15 @@ export class ProductDetails {
   // Then, it calls the animateBackPackIcon function to represent a product was added to the cart.
   addToCart() {
     if(localStorage.getItem(this.productId)){
-      console.log(this.productId, " already is in local storage!");
-      this.product.qty += 1;    
+      let quantity = parseInt(this.product.qty);
+      quantity += 1;
+      this.product.qty = quantity.toString();
+      setLocalStorage(this.productId, this.product);
     }else{
-      console.log(this.productId, " was not in local storage!");
       this.product.qty = 1;
       setLocalStorage(this.productId, this.product);
     }
-    //animateBackPackIcon()
+    animateBackPackIcon()
   }
 
   // This function renders the product details into the given html selector
