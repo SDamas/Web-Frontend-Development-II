@@ -16,7 +16,7 @@ export function renderCartContents() {
 
   if (htmlItems)
     document.querySelector(".product-list").innerHTML = htmlItems?.join("");
-  else
+  else 
     document.querySelector(".product-list").innerHTML = "";
 }
 
@@ -77,9 +77,10 @@ function addElements() {
     document.getElementById('addQty344YK')
       .addEventListener('click', addItem.bind(this, '344YK'));
 
-  if (document.getElementById('addQty985PR'))
-    document.getElementById('addQty985PR')
-      .addEventListener('click', addItem.bind(this, '985PR'));
+  if (document.getElementById("addQty985PR"))
+    document
+      .getElementById("addQty985PR")
+      .addEventListener("click", addItem.bind(this, "985PR"));
 
   if (document.getElementById('addQty344YJ'))
     document.getElementById('addQty344YJ')
@@ -531,7 +532,7 @@ function addItem(idToBeAdded) {
     }
   }
   updateCart();
-};
+}
 
 function displayPrice() {
   let price = getPrice();
