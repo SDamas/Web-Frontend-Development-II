@@ -36,7 +36,9 @@ function cartItemTemplate(itemJson) {
     <p class="cart-card__color">${item.Colors[0].ColorName}</p>
     <p class="cart-card__quantity">qty: ${item.qty} <i class="fa fa-cart-plus fa-2x" id="addQty${item.Id}"" data-id="addQtyItem${item.Id}"></i></p>
     <p class="cart-card__price">$${item.FinalPrice}</p>
-    <i class="fa fa-trash-o fa-1x" id="removeFromCart${item.Id}"" data-id="removeItem${item.Id}"></i>
+    <div id="removeItem">
+      <i class="fa fa-trash-o fa-1x" id="removeFromCart${item.Id}"" data-id="removeItem"></i>
+    </div>
   </li>
 </div>`;
 

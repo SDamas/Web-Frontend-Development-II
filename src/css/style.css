@@ -122,8 +122,22 @@ header {
     opacity: 1;
   }
 }
-
 /*end blink effect*/
+
+/*animation for trash icon*/
+#removeItem{
+  font-size: 24px;
+  transition: transform 0.2s ease-in-out;
+}
+
+#removeItem:hover {
+  transform: scale(1.1);
+}
+
+/*animation for add icon*/
+.cart-card__quantity:hover {
+  transform: scale(1.2);
+}
 
 /* utility classes */
 .highlight {
