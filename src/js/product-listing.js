@@ -5,7 +5,7 @@ import { loadHeaderFooter } from "./utils.mjs";
 
 loadHeaderFooter();
 
-// Get category parameter value from URL
+// Get parameter from URL
 const category = getParam("category");
 
 // Update page title with current category being displayed

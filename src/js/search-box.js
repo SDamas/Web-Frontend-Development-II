@@ -1,5 +1,6 @@
 // This file serves the search box functionality. To filter the search box with products that matches what user is typing.
 import ProductData from "./ProductData.mjs";
+import { filterProductsByPrompt } from "./utils.mjs";
 
 const dataSource = new ProductData();
 const categories = ["tents", "backpacks", "sleeping-bags", "hammocks"];
@@ -21,23 +22,19 @@ setTimeout(() => {
   let searchTimeout;
   searchBox.addEventListener("input", (event) => {
     const prompt = event.target.value;
+    document
+      .querySelector("#search")
+      .setAttribute("href", `/search/index.html?search=${prompt}`);
 
     clearTimeout(searchTimeout);
 
     // Set a new timeout to call filterProducts after a short delay
     searchTimeout = setTimeout(() => {
-      const filteredProducts = filterProducts(prompt);
+      const filteredProducts = filterProductsByPrompt(prompt, products);
       renderProductsSearchResult(filteredProducts);
-    }, 800);
+    }, 700);
   });
 }, 1);
-
-function filterProducts(prompt) {
-  const filteredProducts = products.filter((product) =>
-    product.Name.toLowerCase().includes(prompt)
-  );
-  return filteredProducts;
-}
 
 function renderProductsSearchResult(products) {
   const datalist = document.querySelector("#products");
@@ -47,3 +44,7 @@ function renderProductsSearchResult(products) {
     datalist.appendChild(option);
   });
 }
+
+// This function is called when seach button is clicked. It takes the value in the search box, and
+// pass a search parameter with this value.
+function addSearchParameter() {}
