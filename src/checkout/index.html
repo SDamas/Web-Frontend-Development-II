@@ -6,27 +6,96 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Sleep Outside | Checkout</title>
+    <title>Checkout | Sleep Outside</title>
 
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="../css/style.css" />
 
-    <script src="../js/checkout.js" type="module"></script>
+    <script src="../js/CheckoutProcess.mjs" type="module" defer></script>
+    <script src="../js/layout.js" type="module" defer></script>
+    <!-- Favicon -->
+    <link
+      rel="shortcut icon"
+      href="/images/noun_Tent_2517.svg"
+      type="image/x-icon"
+    />
   </head>
 
   <body>
     <header class="divider" id="main-header"></header>
 
-    <main class="divider">
-      <section class="products">
-        <h2>Review & Place your Order</h2>
-      </section>
+    <main class="divider" id="checkout-main">
+      <div id="checkout-form-container">
+        <form id="checkout-form" action="" method="">
+          <h2>Review & Place your Order</h2>
+          <!-- Shipping section -->
+          <fieldset>
+            <legend>Shipping</legend>
+            <div class="form-field">
+              <label for="firstName">First Name</label>
+              <input type="text" name="firstName" required />
+            </div>
+            <div class="form-field">
+              <label for="lastName">Last Name</label>
+              <input type="text" name="lastName" required />
+            </div>
+            <div class="form-field">
+              <label for="street">Street</label>
+              <input type="char" name="street" required />
+            </div>
+            <div class="form-field">
+              <label for="city">City</label>
+              <input type="text" name="city" required />
+            </div>
+            <div class="form-field">
+              <label for="state">State</label>
+              <input type="text" name="state" required />
+            </div>
+            <div class="form-field">
+              <label for="zip">Zip</label>
+              <input type="text" id="zip" name="zip" required />
+            </div>
+          </fieldset>
+          <!-- Payment section -->
+          <fieldset>
+            <legend>Payment</legend>
+            <div class="form-field">
+              <label for="cardNumber">Card Number</label>
+              <input type="number" name="cardNumber" required />
+            </div>
+            <div class="form-field">
+              <label for="cardExpiration">Expiration</label>
+              <input type="text" name="cardExpiration" required />
+            </div>
+            <div class="form-field">
+              <label for="cardSecurityCode">Security Code</label>
+              <input type="text" name="cardSecurityCode" required />
+            </div>
+          </fieldset>
+          <!-- Order summary section -->
+          <fieldset>
+            <legend>Order Summary</legend>
+            <div class="form-field">
+              <span id="itemSubtotal">Item Subtotal </span>
+              <span id="itemSubtotalValue"></span>
+            </div>
+            <div class="form-field">
+              <span>Shipping Estimate</span>
+              <span id="shippintEstimateValue"></span>
+            </div>
+            <div class="form-field">
+              <span>Tax</span>
+              <span id="taxValue"></span>
+            </div>
+            <div class="form-field">
+              <span id="orderTotal">Order Total</span>
+              <span id="orderTotalValue"></span>
+            </div>
+          </fieldset>
+          <button type="submit" form="checkout-form">Finish purchase</button>
+        </form>
+      </div>
     </main>
 
-    <!-- <footer>&copy;NOT a real business</footer> -->
     <footer id="main-footer"></footer>
-    <!-- <script type="module">
-      import { getQtyItens } from "./js/utils.mjs";
-      document.getElementById("lblCartCount").innerHTML = getQtyItens();
-    </script> -->
   </body>
 </html>

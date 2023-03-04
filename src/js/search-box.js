@@ -44,7 +44,3 @@ function renderProductsSearchResult(products) {
     datalist.appendChild(option);
   });
 }
-
-// This function is called when seach button is clicked. It takes the value in the search box, and
-// pass a search parameter with this value.
-function addSearchParameter() {}

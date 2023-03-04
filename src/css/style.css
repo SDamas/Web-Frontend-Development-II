@@ -39,6 +39,11 @@ body {
 img {
   max-width: 100%;
 }
+
+a {
+  text-decoration: none;
+}
+
 header {
   display: flex;
   justify-content: space-between;
@@ -125,7 +130,7 @@ header {
 /*end blink effect*/
 
 /*animation for trash icon*/
-#removeItem{
+#removeItem {
   font-size: 24px;
   transition: transform 0.2s ease-in-out;
 }
@@ -383,4 +388,40 @@ footer {
 
 #products {
   color: red;
+}
+
+/* Checkout */
+#checkout-main {
+  display: grid;
+  place-items: center;
+  padding: 3rem 1rem;
+}
+
+#checkout-form-container {
+  width: 100%;
+  max-width: 30rem;
+}
+
+#checkout-form {
+  width: 100%;
+}
+
+#checkout-form fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#checkout-form .form-field {
+  display: flex;
+  flex-direction: column;
+}
+
+#checkout-form .form-field input {
+  height: 40px;
+}
+
+#checkout-form #orderTotal,
+#checkout-form #orderTotalValue {
+  font-weight: bold;
 }
