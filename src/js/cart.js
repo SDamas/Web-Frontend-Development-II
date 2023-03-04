@@ -664,7 +664,7 @@ function displayPrice() {
   }
 }
 
-function getPrice() {
+export function getPrice() {
   let priceToDisplay = 0;
   for (let i = 0; i < localStorage.length; i++) {
     const key = localStorage.key(i);
