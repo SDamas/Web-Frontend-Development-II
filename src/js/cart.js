@@ -1,4 +1,4 @@
-import { setLocalStorage, getQtyItens, loadHeaderFooter } from "./utils.mjs";
+import { setLocalStorage, getQtyItens } from "./utils.mjs";
 
 export function renderCartContents() {
   let cartItems = [];
@@ -664,7 +664,7 @@ function displayPrice() {
   }
 }
 
-export function getPrice() {
+function getPrice() {
   let priceToDisplay = 0;
   for (let i = 0; i < localStorage.length; i++) {
     const key = localStorage.key(i);
@@ -701,5 +701,4 @@ function CurrencyFormatted(amount) {
   return s;
 }
 
-loadHeaderFooter();
 updateCart();
