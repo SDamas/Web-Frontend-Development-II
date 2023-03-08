@@ -1,4 +1,4 @@
-import ProductData from "./ProductData.mjs";
+import ExternalServices from "./ExternalServices.mjs";
 import { productCardTemplate } from "./ProductList.mjs";
 import { getParam } from "./utils.mjs";
 import { filterProductsByPrompt } from "./utils.mjs";
@@ -14,7 +14,7 @@ const search = getParam("search");
 document.title = `Sleep Outside: ${search}`;
 
 // Initialize class to access products data
-const dataSource = new ProductData();
+const dataSource = new ExternalServices();
 
 // Get parent element to render the products
 const element = document.querySelector(".product-list");

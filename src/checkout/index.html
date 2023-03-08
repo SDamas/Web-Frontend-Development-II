@@ -12,6 +12,7 @@
 
     <script src="../js/CheckoutProcess.mjs" type="module" defer></script>
     <script src="../js/layout.js" type="module" defer></script>
+    <script src="../js/checkout.js" type="module" defer></script>
     <!-- Favicon -->
     <link
       rel="shortcut icon"
@@ -31,28 +32,33 @@
           <fieldset>
             <legend>Shipping</legend>
             <div class="form-field">
-              <label for="firstName">First Name</label>
-              <input type="text" name="firstName" required />
+              <label for="fname">First Name</label>
+              <input type="text" name="fname" value="Samad" required />
             </div>
             <div class="form-field">
-              <label for="lastName">Last Name</label>
-              <input type="text" name="lastName" required />
+              <label for="lname">Last Name</label>
+              <input type="text" name="lname" value="Damas" required />
             </div>
             <div class="form-field">
               <label for="street">Street</label>
-              <input type="char" name="street" required />
+              <input type="char" name="street" value="123 home" required />
             </div>
             <div class="form-field">
               <label for="city">City</label>
-              <input type="text" name="city" required />
+              <input type="text" name="city" value="NewYork" required />
             </div>
             <div class="form-field">
               <label for="state">State</label>
-              <input type="text" name="state" required />
+              <input
+                type="text"
+                name="state"
+                value="Close to new york"
+                required
+              />
             </div>
             <div class="form-field">
               <label for="zip">Zip</label>
-              <input type="text" id="zip" name="zip" required />
+              <input type="text" id="zip" name="zip" value="83340" required />
             </div>
           </fieldset>
           <!-- Payment section -->
@@ -60,15 +66,20 @@
             <legend>Payment</legend>
             <div class="form-field">
               <label for="cardNumber">Card Number</label>
-              <input type="number" name="cardNumber" required />
+              <input
+                type="number"
+                name="cardNumber"
+                value="1234123412341234"
+                required
+              />
             </div>
             <div class="form-field">
-              <label for="cardExpiration">Expiration</label>
-              <input type="text" name="cardExpiration" required />
+              <label for="expiration">Expiration</label>
+              <input type="text" name="expiration" value="8/24" required />
             </div>
             <div class="form-field">
-              <label for="cardSecurityCode">Security Code</label>
-              <input type="text" name="cardSecurityCode" required />
+              <label for="code">Security Code</label>
+              <input type="text" name="code" value="123" required />
             </div>
           </fieldset>
           <!-- Order summary section -->
@@ -91,7 +102,9 @@
               <span id="orderTotalValue"></span>
             </div>
           </fieldset>
-          <button type="submit" form="checkout-form">Finish purchase</button>
+          <button type="submit" id="submit-btn" form="checkout-form">
+            Finish purchase
+          </button>
         </form>
       </div>
     </main>

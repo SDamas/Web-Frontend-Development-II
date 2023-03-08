@@ -1,45 +1,87 @@
 // This is the checkout module for the checkout page.
+import { getCartItems } from "./utils.mjs";
+import ExternalServices from "./ExternalServices.mjs";
+
+const externalServices = new ExternalServices();
+
+
+// takes the items currently stored in the cart (localstorage) and returns them in a simplified form.
+const cartItems = getCartItems();
+
+export function packageItems(items) {
+  // convert the list of products from localStorage to the simpler form required for the checkout process.
+  let simplifiedcartItemsInfo = items.map((item) => {
+    return {id: item.Id, name: item.Name, price: item.FinalPrice, quantity: item.qty}
+  });
+
+  return simplifiedcartItemsInfo;
+}
 
 export default class CheckoutProcess {
-  constructor(key, outputSelector) {
-    this.key = key;
+  constructor(outputSelector) {
     this.outputSelector = outputSelector;
-    this.list = [];
+    this.list = packageItems(cartItems);
     this.itemTotal = getPrice();
     this.shipping = 0;
-    this.tax = 0;
+    this.tax = 0.06;
     this.orderTotal = 0;
   }
   init() {
-    this.list = getLocalStorage(this.key);
     this.calculateItemSummary();
   }
   calculateItemSummary() {
     // calculate and display the total amount of the items in the cart, and the number of items.
-    
+    this.calculateOrdertotal();
+    document.querySelector(`${this.outputSelector} #itemSubtotal`).innerHTML += `(${this.list.length})`;
   }
   calculateOrdertotal() {
     // calculate the shipping and tax amounts. Then use them to along with the cart total to figure out the order total
     
+    // Calculate shipping
+    for (const item of this.list) {
+      if (item === this.list[0]) {
+        this.shipping += 10;
+      } else {
+        this.shipping += 2;
+      }
+    }
+
+    // Calculate tax
+    this.tax = (this.itemTotal + this.shipping) * 0.06;
+
+    // Calculate order total
+    this.orderTotal = this.itemTotal + this.shipping + this.tax;
+
     // display the totals.
     this.displayOrderTotals();
   }
   displayOrderTotals() {
-    // once the totals are all calculated display them in the order summary page
+    document.querySelector(`${this.outputSelector} #itemSubtotalValue`).textContent = this.itemTotal;
+    document.querySelector(`${this.outputSelector} #shippingEstimateValue`).textContent = this.shipping;
+    document.querySelector(`${this.outputSelector} #taxValue`).textContent = this.tax;
+    document.querySelector(`${this.outputSelector} #orderTotalValue`).textContent = this.orderTotal;
+  }
+  async checkout() {
+    // Build the order json object from the calculated fields, the items in the cart, and the information entered into the form
+    // Takes the form element
+    const form = document.forms["checkout-form"];
+    // Convert to json
+    const orderJSON = formDataToJSON(form);
+
+    // Add order summary to json
+    orderJSON.items = this.list;
+    orderJSON.orderTotal = this.orderTotal;
+    orderJSON.shipping = this.shipping;
+    orderJSON.tax = this.tax.toString()
+    orderJSON.orderDate = new Date().toISOString();
+    // TEST: See the order being sent: console.log(orderJSON);
+    
+    // Send our order to the externalServices checkout
+      const response = await externalServices.checkout(orderJSON);
+      // See reponse got from server
+      console.log(response);
   }
 }
-
-const subTotal = getPrice();
-document.getElementById("itemSubtotalValue").innerHTML = subTotal;
-
-const tax = calculateTax();
-document.querySelector("#taxValue").innerHTML = tax;
-
-const shippingEstimate = calculateShipping();
-document.querySelector("#shippingEstimateValue").textContent = shippingEstimate;
-
-const orderTotal = calculateOrderTotal(subTotal, tax, shippingEstimate);
-document.querySelector("#orderTotalValue").textContent = orderTotal;
 
 function getPrice() {
   let priceToDisplay = 0;
@@ -78,37 +120,13 @@ function CurrencyFormatted(amount) {
   return s;
 }
 
-function calculateTax() {
-  return CurrencyFormatted(subTotal * 0.06);
-}
+function formDataToJSON(formElement) {
+  const formData = new FormData(formElement),
+    convertedJSON = {};
 
-function getQtyItens() {
-  let qty = 0;
-  for (let i = 0; i < localStorage.length; i++) {
-    const key = localStorage.key(i);
-    const value = localStorage.getItem(key);
-    const obj = JSON.parse(value);
-    let quantity = parseInt(obj.qty);
-    qty += quantity;
-  }
+  formData.forEach(function (value, key) {
+    convertedJSON[key] = value;
+  });
 
-  return qty;
-}
-
-function calculateShipping() {
-  let shippingValue = 0;
-
-  for(let i = 0; i < getQtyItens(); i++) {
-    if (i === 0) {
-      shippingValue += 10;
-    } else {
-      shippingValue += 2;
-    }
-  }
-
-  return shippingValue;
-}
-
-function calculateOrderTotal(subtotal, tax, shippingEstimate) {
-  return CurrencyFormatted((parseFloat(subtotal) + parseFloat(tax) + parseInt(shippingEstimate)));
+  return convertedJSON;
 }

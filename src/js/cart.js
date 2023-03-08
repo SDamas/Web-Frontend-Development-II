@@ -7,9 +7,6 @@ export function renderCartContents() {
     cartItems.push(key);
   }
 
-  /* This is a test comment to see the items in the cart 
-  console.log(cartItems) */
-
   let htmlItems = "";
   for (let i = 0; i < localStorage.length; i++) {
     const key = localStorage.key(i);
