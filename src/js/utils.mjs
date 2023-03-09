@@ -23,6 +23,16 @@ export function getQtyItens() {
   return qtyItens;
 }
 
+export function getCartItems() {
+  const items = [];
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    const value = localStorage.getItem(key);
+    items.push(JSON.parse(value));
+  }
+  return items;
+}
+
 // retrieve data from localstorage
 export function getLocalStorage(key) {
   return JSON.parse(localStorage.getItem(key));
