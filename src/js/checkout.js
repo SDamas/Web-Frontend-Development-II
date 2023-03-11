@@ -1,6 +1,4 @@
-import { getCartItems } from "./utils.mjs";
 import CheckoutProcess from "./CheckoutProcess.mjs";
-import { packageItems } from "./CheckoutProcess.mjs";
 
 // Get order summary field
 
