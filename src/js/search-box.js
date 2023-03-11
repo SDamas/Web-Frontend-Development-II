@@ -1,6 +1,5 @@
 // This file serves the search box functionality. To filter the search box with products that matches what user is typing.
 import ExternalServices from "./ExternalServices.mjs";
-import { filterProductsByPrompt } from "./utils.mjs";
 
 const dataSource = new ExternalServices();
 const categories = ["tents", "backpacks", "sleeping-bags", "hammocks"];
