@@ -115,10 +115,3 @@ export function setClick(selector, callback) {
   });
   qs(selector).addEventListener("click", callback);
 }
-
-export function filterProductsByPrompt(prompt, list) {
-  const filteredProducts = list.filter((product) =>
-    product.Name.toLowerCase().includes(prompt)
-  );
-  return filteredProducts;
-}

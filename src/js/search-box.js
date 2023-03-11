@@ -1,20 +1,17 @@
 // This file serves the search box functionality. To filter the search box with products that matches what user is typing.
 import ExternalServices from "./ExternalServices.mjs";
-import { filterProductsByPrompt } from "./utils.mjs";
 
 const dataSource = new ExternalServices();
 const categories = ["tents", "backpacks", "sleeping-bags", "hammocks"];
+const products = [];
 
-// 1. Get all products
-async function getProducts() {
-  const products = [];
-  for (const category of categories) {
-    const data = await dataSource.getData(category);
-    products.push(...data);
-  }
-  return products;
+for (const category of categories) {
+  dataSource.getData(category).then((result) =>
+    result.forEach((product) => {
+      products.push(product);
+    })
+  );
 }
-const products = await getProducts();
 
 // Get search box input. Wait until element is rendered on the screen.
 setTimeout(() => {
@@ -29,17 +26,18 @@ setTimeout(() => {
     clearTimeout(searchTimeout);
 
     // Set a new timeout to call filterProducts after a short delay
+    console.log(products);
     searchTimeout = setTimeout(() => {
       const filteredProducts = filterProductsByPrompt(prompt, products);
       renderProductsSearchResult(filteredProducts);
-    }, 700);
+    }, 500);
   });
-}, 1);
+}, 1000);
 
-function renderProductsSearchResult(products) {
+function renderProductsSearchResult(list) {
   const datalist = document.querySelector("#products");
   datalist.innerHTML = "";
-  products.forEach((product) => {
+  list.forEach((product) => {
     const option = new Option(product.Name, product.Id);
     datalist.appendChild(option);
   });

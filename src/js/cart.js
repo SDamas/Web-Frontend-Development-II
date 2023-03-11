@@ -21,9 +21,6 @@ export function renderCartContents() {
 
 function cartItemTemplate(itemJson) {
   const item = JSON.parse(itemJson);
-  /* This is a test comment to see the object of each item 
-  console.log(item)
-  */
   const newItem = `<div class="row">
   <li class="cart-card divider">
     <a href="#" class="cart-card__image">

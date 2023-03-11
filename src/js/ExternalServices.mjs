@@ -1,9 +1,9 @@
 const baseURL = "http://server-nodejs.cit.byui.edu:3000/"
 
-function convertToJson(response) {
-  const responseJSON = response.json();
+async function convertToJson(response) {
+  const responseJSON = await response.json();
   if (response.ok) {
-    return "Order sent successfully!"
+    return responseJSON;
   } else {
     throw { name: 'servicesError', message: responseJSON };
   }
@@ -12,14 +12,6 @@ function convertToJson(response) {
 export default class ExternalServices {
   constructor() {
     this.categories = ["tents", "backpacks", "sleeping-bags", "hammocks"];
-  }
-  async getProducts() {
-    const products = [];
-    for (const category of this.categories) {
-      const data = await this.getData(category);
-      products.push(...data);
-    }
-    return products;
   }
 
   async getData(category) {
