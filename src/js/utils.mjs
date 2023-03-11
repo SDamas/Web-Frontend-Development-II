@@ -5,24 +5,6 @@ export function qs(selector, parent = document) {
 // or a more concise version if you are into that sort of thing:
 // export const qs = (selector, parent = document) => parent.querySelector(selector);
 
-// Loading the product ids
-export function getProductsIds() {
-  return ["880RR", "985RF", "989CG", "985PR", "880RT", "344YJ"];
-}
-
-//Getting quantity of items
-export function getQtyItens() {
-  let productIds = getProductsIds();
-  let qtyItens = 0;
-  
-  for (let i = 0; i < productIds.length; i++) {
-    if (getLocalStorage(productIds[i]) != null){
-      qtyItens = qtyItens + 1;
-    }
-  }
-  return qtyItens;
-}
-
 export function getCartItems() {
   const items = [];
   for (let i = 0; i < localStorage.length; i++) {
@@ -41,14 +23,6 @@ export function getLocalStorage(key) {
 export function setLocalStorage(key, data) {
   localStorage.setItem(key, JSON.stringify(data));
 }
-// set a listener for both touchend and click
-// export function setClick(selector, callback) {
-//   qs(selector).addEventListener("touchend", (event) => {
-//     event.preventDefault();
-//     callback();
-//   });
-//   qs(selector).addEventListener("click", callback);
-// }
 
 export function getParam(param) {
   const queryString = window.location.search;
