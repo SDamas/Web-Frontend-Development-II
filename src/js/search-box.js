@@ -26,7 +26,6 @@ setTimeout(() => {
     clearTimeout(searchTimeout);
 
     // Set a new timeout to call filterProducts after a short delay
-    console.log(products);
     searchTimeout = setTimeout(() => {
       const filteredProducts = filterProductsByPrompt(prompt, products);
       renderProductsSearchResult(filteredProducts);
@@ -40,5 +39,12 @@ function renderProductsSearchResult(list) {
   list.forEach((product) => {
     const option = new Option(product.Name, product.Id);
     datalist.appendChild(option);
+  });
+}
+
+export function filterProductsByPrompt(prompt, list) {
+  // TODO: See why list is being returned empty if modified in other line than the return line in the function
+  return list.filter(product => {
+    return product.Name.toLowerCase().includes(prompt)
   });
 }
