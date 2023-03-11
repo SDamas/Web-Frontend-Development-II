@@ -3,6 +3,7 @@ import { productCardTemplate } from "./ProductList.mjs";
 import { getParam } from "./utils.mjs";
 import { renderListWithTemplate } from "./utils.mjs";
 import { loadHeaderFooter } from "./utils.mjs";
+import { filterProductsByPrompt } from "./search-box.js";
 
 loadHeaderFooter();
 
@@ -29,16 +30,8 @@ for (const category of categories) {
 }
 
 setTimeout(() => {
+  // Filter products that match search value
   const filteredProducts = filterProductsByPrompt(search, products);
-  console.log(filteredProducts);
   // Render list
   renderListWithTemplate(productCardTemplate, element, filteredProducts);
 }, 2000);
-
-console.log(products);
-// // Filter products that match search value
-
-function filterProductsByPrompt(prompt, list) {
-  // TODO: See why list is being returned empty if modified in other line than the return line in the function
-  return list;
-}
