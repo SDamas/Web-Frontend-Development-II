@@ -1,4 +1,4 @@
-import { setLocalStorage, getQtyItens } from "./utils.mjs";
+import { setLocalStorage } from "./utils.mjs";
 
 export function renderCartContents() {
   let cartItems = [];
@@ -47,7 +47,6 @@ function cartItemTemplate(itemJson) {
 function updateCart() {
   renderCartContents();
   displayPrice();
-  // document.getElementById("lblCartCount").innerHTML = getQtyItens();
   addElements();
   removeElements();
 }

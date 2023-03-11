@@ -38,28 +38,28 @@ export default class CheckoutProcess {
     // calculate the shipping and tax amounts. Then use them to along with the cart total to figure out the order total
     
     // Calculate shipping
+    let quantity = 0;
     for (const item of this.list) {
-      if (item === this.list[0]) {
-        this.shipping += 10;
-      } else {
-        this.shipping += 2;
-      }
+      quantity += parseInt(item.quantity);
     }
+    if(quantity === 0) this.shipping = 0;
+    else if (quantity === 1) this.shipping = 10;
+    else this.shipping = (quantity - 1)*2 + 10;
 
     // Calculate tax
-    this.tax = (this.itemTotal + this.shipping) * 0.06;
+    this.tax = (parseFloat(this.itemTotal) + this.shipping) * 0.06;
 
-    // Calculate order total
-    this.orderTotal = this.itemTotal + this.shipping + this.tax;
+    // Calculate order total;
+    this.orderTotal = parseFloat(this.itemTotal) + this.shipping + this.tax;
 
     // display the totals.
     this.displayOrderTotals();
   }
   displayOrderTotals() {
-    document.querySelector(`${this.outputSelector} #itemSubtotalValue`).textContent = this.itemTotal;
-    document.querySelector(`${this.outputSelector} #shippingEstimateValue`).textContent = this.shipping;
-    document.querySelector(`${this.outputSelector} #taxValue`).textContent = this.tax;
-    document.querySelector(`${this.outputSelector} #orderTotalValue`).textContent = this.orderTotal;
+    document.querySelector(`${this.outputSelector} #itemSubtotalValue`).textContent = '$'+this.itemTotal;
+    document.querySelector(`${this.outputSelector} #shippingEstimateValue`).textContent = '$'+CurrencyFormatted(this.shipping);
+    document.querySelector(`${this.outputSelector} #taxValue`).textContent = '$'+CurrencyFormatted(this.tax);
+    document.querySelector(`${this.outputSelector} #orderTotalValue`).textContent = '$'+CurrencyFormatted(this.orderTotal);
   }
   async checkout() {
     // Build the order json object from the calculated fields, the items in the cart, and the information entered into the form
