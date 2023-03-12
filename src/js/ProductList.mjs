@@ -10,19 +10,11 @@ export default class ProductList {
     this.listElement = listElement;
   }
   async init() {
-
-    // our dataSource will return a Promise...so we can use await to resolve it.
+    // Wait for the list
     const list = await this.dataSource.getData(this.category);
-
-    // render the list 
     this.renderList(list);
-
-     // NOTE: calling function for "Remove extra products" idea.
-    filterProductsById(list, "880RR", "985RF");
-
   }
 
-  // render after doing the first stretch
   renderList(list) {
     renderListWithTemplate(productCardTemplate, this.listElement, list);
   }
@@ -38,17 +30,10 @@ export function productCardTemplate(product) {
   <h3 class="card__brand">${product.Brand.Name}</h3>
   <h2 class="card__name">${product.Name}</h2>
   <p class="product-card__price">$${product.FinalPrice}</p></a>
+  <button class="quick-view-btn" data-product-id="${product.Id}">Quick view</button>
+  <div class="quick-view-modals" id="quick-view-modal-${product.Id}">
+  <p>Color: ${product.Colors[0].ColorName}</p>
+  <p id="quick-view-discount">$${(product.SuggestedRetailPrice - product.FinalPrice).toFixed(2)} OFF!</p>
+  </div>
 </li>`;
-}
-
-/* NOTE: Adding this function for the functionality "Remove extra products" and filter our list of products to just the 4 we need.
-And idea of what we could do.
-*/
-function filterProductsById(list, ...products) {
-  console.log("Objetcs being displayed from ProductList.mjs")
-  for (const product of list) {
-    if (products.includes(product.Id)) {
-      console.log(product)
-    }
-  }
 }

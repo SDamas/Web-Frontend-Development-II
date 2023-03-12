@@ -22,3 +22,22 @@ const listing = new ProductList(category, dataSource, element);
 
 // Render product list
 listing.init();
+
+// Add quick view modal funcionality
+document.addEventListener("DOMContentLoaded", function () {
+  setTimeout(() => {
+    // Get all quick view buttons
+    const quickViewButtons = document.querySelectorAll(".quick-view-btn");
+    quickViewButtons.forEach((button) => {
+      // Add click event
+      button.addEventListener("click", (event) => {
+        // When button clicked, get productId
+        const productId = event.target.dataset.productId;
+        // Get quick view modal for that productId
+        const modal = document.querySelector(`#quick-view-modal-${productId}`);
+        // Add or remove show class
+        modal.classList.toggle("show");
+      });
+    });
+  }, 1400);
+});
