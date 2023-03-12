@@ -44,7 +44,5 @@ function renderProductsSearchResult(list) {
 
 export function filterProductsByPrompt(prompt, list) {
   // TODO: See why list is being returned empty if modified in other line than the return line in the function
-  return list.filter(product => {
-    return product.Name.toLowerCase().includes(prompt)
-  });
+  return list.filter((product) => product.Name.toLowerCase().includes(prompt));
 }
