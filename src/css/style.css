@@ -243,11 +243,45 @@ button {
   padding: 0.5em;
   border: 1px solid var(--light-grey);
   max-width: 250px;
+  position: relative;
 }
 .product-card h2,
 .product-card h3,
 .product-card p {
   margin: 0.5em 0;
+}
+
+.product-card button {
+  background: none;
+  color: var(--secondary-color);
+  font-size: 1rem;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 0.5rem;
+  z-index: 2;
+}
+
+.product-card .quick-view-modals {
+  position: absolute;
+  bottom: 0;
+  z-index: 1;
+  background-color: white;
+  width: 96%;
+  height: 40%;
+  display: none;
+}
+
+.product-card .quick-view-modals.show {
+  display: block;
+}
+
+.product-card #quick-view-discount {
+  padding: 0.3rem;
+  background: var(--secondary-color);
+  color: white;
+  width: 8rem;
+  border-radius: 4px;
 }
 
 .card__brand {
