@@ -159,6 +159,13 @@ button {
   font-size: var(--large-font);
   cursor: pointer;
 }
+
+button:hover {
+  transform: scale(1.05);
+  border: 2px solid firebrick;
+  opacity: 0.85;
+}
+
 .divider {
   border-bottom: 2px solid var(--primary-color);
 }

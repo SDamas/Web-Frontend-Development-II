@@ -1,5 +1,5 @@
 // This is the checkout module for the checkout page.
-import { getCartItems } from "./utils.mjs";
+import { getCartItems, removeAllAlerts } from "./utils.mjs";
 import ExternalServices from "./ExternalServices.mjs";
 
 const externalServices = new ExternalServices();
@@ -74,12 +74,21 @@ export default class CheckoutProcess {
     orderJSON.shipping = this.shipping;
     orderJSON.tax = this.tax.toString()
     orderJSON.orderDate = new Date().toISOString();
-    // TEST: See the order being sent: console.log(orderJSON);
-    
-    // Send our order to the externalServices checkout
+
+    try {
       const response = await externalServices.checkout(orderJSON);
-      // See reponse got from server
       console.log(response);
+      //clear out our cart contents in localStorage.
+      localStorage.clear();
+      location.assign("/checkout/success.html");
+    } catch (err) {
+      // get rid of any preexisting alerts.
+      removeAllAlerts();
+      for (let message in err.message) {
+        alertMessage(err.message[message]);
+      }
+      console.log(err);
+    }
   }
 }
 
