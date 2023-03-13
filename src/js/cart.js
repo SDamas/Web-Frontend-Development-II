@@ -339,7 +339,7 @@ function addElements() {
       .addEventListener("click", addItem.bind(this, "22YVD"));
 }
 
-function removeElements(idToBeRemoved) {
+function removeElements() {
   //Tends
   if (document.getElementById("removeFromCart989CH"))
     document

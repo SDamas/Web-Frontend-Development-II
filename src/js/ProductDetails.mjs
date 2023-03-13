@@ -11,7 +11,6 @@ export class ProductDetails {
   async init() {
     // Get product data from remote url
     this.product = await this.dataSource.findProductById(this.productId);
-
     // Render the product details into the .product-details html element
     this.renderProductDetails(".product-details");
 
@@ -57,7 +56,7 @@ function productDetailsTemplate(product) {
     <h2 class="divider">${product.NameWithoutBrand}</h2>
     <img
       class="divider"
-      src="${product.Images.PrimaryLarge}"
+      src="${displayCorrectImageSizeForScreenWidth(product)}"
       alt="${product.NameWithoutBrand}"
     />
     <div class="discount" id="discount" >
@@ -71,6 +70,15 @@ function productDetailsTemplate(product) {
     <div class="product-detail__add">
       <button id="addToCart" data-id="${product.Id}">Add to Cart</button>
     </div></section>`;
+}
+
+function displayCorrectImageSizeForScreenWidth(product) {
+  const screenWidth = window.innerWidth;
+  if (screenWidth >= 1200) {
+    return product.Images.PrimaryExtraLarge;
+  } else {
+    return product.Images.PrimaryLarge;
+  }
 }
 
 function CurrencyFormatted(amount) {
