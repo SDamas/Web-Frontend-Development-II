@@ -1,5 +1,5 @@
 // This is the checkout module for the checkout page.
-import { getCartItems, removeAllAlerts } from "./utils.mjs";
+import { getCartItems, alertMessage, removeAllAlerts } from "./utils.mjs";
 import ExternalServices from "./ExternalServices.mjs";
 
 const externalServices = new ExternalServices();

@@ -1,4 +1,4 @@
-import { setLocalStorage } from "./utils.mjs";
+import { setLocalStorage, alertMessage } from "./utils.mjs";
 import { animateBackPackIcon } from "./utils.mjs";
 
 export class ProductDetails {
@@ -24,6 +24,7 @@ export class ProductDetails {
   // This function sets the product'a id and json to the LocalStorage.
   // Then, it calls the animateBackPackIcon function to represent a product was added to the cart.
   addToCart() {
+    alertItemAdded(this.product.NameWithoutBrand);
     if(localStorage.getItem(this.productId)){
       const productBody = localStorage.getItem(this.productId);
       const productBodyAsObj = JSON.parse(productBody);
@@ -48,6 +49,20 @@ export class ProductDetails {
       productDetailsTemplate(this.product)
     );
   }
+}
+
+function alertItemAdded(itemName){
+  const alert = document.createElement("div");
+  alert.setAttribute('id', 'alertSuccess');
+  const existingElement = document.getElementById('addToCart');
+  existingElement.insertAdjacentElement('afterend', alert);
+
+  alert.classList.add("alert");
+  alert.innerHTML = `<p>${itemName} was successfully added! </p>`;
+
+  setTimeout(function () {
+    alert.remove();
+  }, 4000);
 }
 
 // This function is the template used to render the product details. It receives a json object as parameter.
