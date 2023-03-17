@@ -2,6 +2,7 @@ const baseURL = "http://server-nodejs.cit.byui.edu:3000/"
 
 async function convertToJson(response) {
   const responseJSON = await response.json();
+  // Code to test response retrieved: console.log(responseJSON)
   if (response.ok) {
     return responseJSON;
   } else {
@@ -37,5 +38,30 @@ export default class ExternalServices {
 
     const response = await fetch(baseURL + "checkout/", options);
     return convertToJson(response);
+  }
+
+  async loginRequest(credentials) {
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(credentials)
+    }
+
+    const response = await fetch(baseURL + "login", options).then(convertToJson);
+    return response.accessToken;
+  }
+
+  async ordersRequest(token) {
+    const options = {
+      method: "GET",
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    }
+
+    const response = await fetch(baseURL + "orders/", options).then(convertToJson);
+    return response;
   }
 }
