@@ -581,3 +581,41 @@ footer {
 #modal-content button {
   margin-top: 0.5rem;
 }
+
+/* Newsletter signup */
+#newsletter-signup {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  border-radius: 4px;
+  border: 1px solid var(--primary-color);
+  margin: 4rem 0;
+  padding: 2rem;
+}
+
+#newsletter-form {
+  margin: 1rem 0;
+  display: grid;
+  gap: 1rem;
+  width: 100%;
+  max-width: 20rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.form-field input {
+  height: 40px;
+  padding-left: .5rem;
+}
+
+.form-field input:valid {
+  border: 1px solid green;
+}
+
+#newsletter-signup-btn {
+  margin-top: .7rem;
+}
