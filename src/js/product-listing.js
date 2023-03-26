@@ -41,3 +41,70 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }, 1400);
 });
+
+// Add sort by functionality
+
+// Get sort by buttons
+const sortByNameBtn = document.querySelector("#sort-by-name");
+const sortByPriceBtn = document.querySelector("#sort-by-price");
+
+sortByNameBtn.addEventListener("click", sortByName);
+sortByPriceBtn.addEventListener("click", sortByPrice);
+
+function sortByName() {
+  sortBy(this.textContent);
+}
+
+function sortByPrice() {
+  sortBy(this.textContent);
+}
+
+// This function takes a string parameter 'filter' and sorts a list of products
+function sortBy(filter) {
+  if (filter.toLowerCase() === "price") {
+    // Get the current list of products
+    const products = Array.from(element.children);
+    const sortedProducts = products.sort((a, b) => {
+      // Parse the price value of productA and productB as an integer and remove any $ or . characters
+      const productA = parseInt(
+        a.children[0].children[3].textContent.replace(/[$.]/g, "")
+      );
+      const productB = parseInt(
+        b.children[0].children[3].textContent.replace(/[$.]/g, "")
+      );
+
+      // Return the result of the comparison between productA and productB
+      return sortProductAProductB(productA, productB);
+    });
+    renderSortedProducts(sortedProducts);
+  } else if (filter.toLowerCase() === "name") {
+    // Get the current list of products
+    const products = Array.from(element.children);
+    const sortedProducts = products.sort((a, b) => {
+      // Get the name values of productA and productB
+      const productA = a.children[0].children[1].textContent;
+      const productB = b.children[0].children[1].textContent;
+
+      // Return the result of the comparison between productA and productB
+      return sortProductAProductB(productA, productB);
+    });
+    renderSortedProducts(sortedProducts);
+  }
+}
+
+function sortProductAProductB(productA, productB) {
+  if (productA < productB) {
+    return -1;
+  }
+  if (productA > productB) {
+    return 1;
+  }
+  return 0;
+}
+
+function renderSortedProducts(sortedProducts) {
+  // Convert the sorted products into an array of HTML strings and join them into a single string
+  const html = sortedProducts.map((li) => li.outerHTML).join("");
+  // Update the HTML content of the element with the sorted list of products
+  element.innerHTML = html;
+}
