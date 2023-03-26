@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sleep Outside | Home</title>
     <link rel="stylesheet" href="/css/style.css" />
+    <!-- Javascript -->
     <script src="./js/layout.js" type="module" defer></script>
     <script src="./js/search-box.js" type="module" defer></script>
     <script src="./js/alerts.js" type="module" defer></script>
+    <script src="./js/modal.js" defer></script>
     <!-- Favicon -->
     <link
       rel="shortcut icon"
@@ -16,6 +18,27 @@
     />
   </head>
   <body>
+    <div id="modal-background"></div>
+    <div id="modal">
+      <div id="modal-content">
+        <span id="close-modal-btn">X</span>
+        <h2>Welcome! &#x1F44B;</h2>
+        <p>
+          We'd like to invite you to become a part of our community by
+          registering with us.<br />
+
+          <br />As a special thank you for registering, we're offering a chance
+          to participate in an exclusive giveaway to win a brand new Ipad*
+          🎉.<br />
+        </p>
+
+        <p>Click "Register" below. Don't miss out!</p>
+        <img src="/images/ipad.png" alt="Ipad" />
+        <p id="source">Source: <a href="https://www.apple.com/">Apple</a></p>
+        <p id="disclaim">This is not a real giveaway*</p>
+        <button id="register-btn">Register</button>
+      </div>
+    </div>
     <header class="divider" id="main-header"></header>
     <main class="divider">
       <div class="hero">
