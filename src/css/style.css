@@ -288,6 +288,16 @@ button:hover {
   color: var(--dark-grey);
 }
 /* Styles for product lists */
+#sort-by {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+#sort-by span {
+  cursor: pointer;
+}
+
 .product-card {
   flex: 1 1 45%;
   margin: 0.25em;
