@@ -10,6 +10,7 @@
     <script src="./js/search-box.js" type="module" defer></script>
     <script src="./js/alerts.js" type="module" defer></script>
     <script src="./js/modal.js" defer></script>
+    <script src="./js/newsletter.js" defer></script>
     <!-- Favicon -->
     <link
       rel="shortcut icon"
@@ -102,6 +103,24 @@
             <h1>Hammocks</h1>
           </div></a
         >
+      </section>
+      <section id="newsletter-signup">
+        <h2>Sign-up for our newsletter!</h2>
+        <p>Stay tuned with SleepOutside's most recent news and events. We promise the best content!<br>
+        <br>&#x1F195; Updates every monday.
+        </p>
+        <form id="newsletter-form">
+          <div class="form-field">
+            <label for="name">Full name*</label>
+            <input id="name" name="name" type="text" required>
+          </div>
+          <div class="form-field">
+            <label for="email">Email*</label>
+            <input id="email" name="email" type="email" required>
+          </div>
+          <span id="invalid-input-message"></span>
+        </form>
+        <button id="newsletter-signup-btn" type="submit" form="newsletter-form">Sign-up</button>
       </section>
     </main>
     <footer id="main-footer"></footer>
